@@ -54,6 +54,10 @@ async def song(client, message):
         await status.edit("**Song not found.** 🤔")
         return ""
     yt = YouTube(video_link)
+     thumbnail = results[0]["thumbnails"][0]
+            thumb_name = f'thumb{message.message_id}.jpg'
+            thumb = requests.get(thumbnail, allow_redirects=True)
+            open(thumb_name, 'wb').write(thumb.content)
     audio = yt.streams.filter(only_audio=True).first()
     try:
         download = audio.download(filename=f"{str(yt.title)}")
