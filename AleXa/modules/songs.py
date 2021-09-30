@@ -19,7 +19,6 @@ def yt_search(song):
     else:
         video_id = result["result"][0]["id"]
         url = f"https://youtu.be/{video_id}"
-        imgp =f"https://img.youtube.com/vi/{video_id}/0.jpg"
         return url
 
 
@@ -53,6 +52,7 @@ async def song(client, message):
         return ""
     status = await message.reply("**Downloading Song** 😊")
     video_link = yt_search(args)
+     imgp = yt_search(result["result"][0]["id"])
     if not video_link:
         await status.edit("**Song not found.** 🤔")
         return ""
