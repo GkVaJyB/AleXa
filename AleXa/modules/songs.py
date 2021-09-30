@@ -4,6 +4,7 @@ import aiohttp
 from pyrogram import filters
 from pytube import YouTube
 import requests
+import urllib.request
 from youtubesearchpython import VideosSearch
 
 from AleXa import LOGGER, pbot
@@ -57,11 +58,7 @@ async def song(client, message):
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
-    response = download(f'https://img.youtube.com/vi/{video_id}/0.jpg')
-    DIRCOVER =  message.message_id + ".jpg"
-    file = open(DIRCOVER, "wb")
-    file.write(response.content)
-    file.close()
+   urllib.request.urlretrieve(f'https://img.youtube.com/vi/{video_id}/0.jpg', f"{message.message_id}.jpg")
         thumb_name = f'{message.message_id}.jpg'
         download = audio.download(filename=f"{str(yt.title)}")
     except Exception as ex:
