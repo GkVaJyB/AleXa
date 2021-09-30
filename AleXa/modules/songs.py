@@ -19,6 +19,7 @@ def yt_search(song):
     else:
         video_id = result["result"][0]["id"]
         url = f"https://youtu.be/{video_id}"
+        imgp =f"https://img.youtube.com/vi/{video_id}/0.jpg"
         return url
 
 
@@ -55,7 +56,7 @@ async def song(client, message):
     if not video_link:
         await status.edit("**Song not found.** 🤔")
         return ""
-    urllib.request.urlretrieve(f"https://img.youtube.com/vi/{video_id}/0.jpg", f"{message.message_id}.jpg")
+    urllib.request.urlretrieve(f"{imgp}", f"{message.message_id}.jpg")
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
