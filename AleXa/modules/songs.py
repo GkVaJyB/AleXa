@@ -56,16 +56,16 @@ async def song(client, message):
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
-        download = audio.download(filename=f"{str(user_id)}")
+        download = audio.download(filename=f"{str(yt.title)}")
     except Exception as ex:
         await status.edit("Failed to download song")
         LOGGER.error(ex)
         return ""
-    os.rename(download, f"{str(user_id)}.mp3")
+    os.rename(download, f"{str(yt.title)}.mp3")
     await pbot.send_chat_action(message.chat.id, "upload_audio")
     await pbot.send_audio(
         chat_id=message.chat.id,
-        audio=f"{str(user_id)}.mp3",
+        audio=f"{str(yt.title)}.mp3",
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
@@ -73,7 +73,7 @@ async def song(client, message):
         reply_to_message_id=message.message_id,
        )
     await status.delete()
-    os.remove(f"{str(user_id)}.mp3")
+    os.remove(f"{str(yt.title)}.mp3")
 
 
 __help__ = """
