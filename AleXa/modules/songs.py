@@ -38,7 +38,7 @@ class AioHttp:
         async with aiohttp.ClientSession() as session:
             async with session.get(link) as resp:
                 return await resp.read()
-
+thumb_name = f'https://telegra.ph/file/b3c58ee878c4e1216e4fe.jpg'
 
 @pbot.on_message(filters.command("song"))
 async def song(client, message):
@@ -69,8 +69,9 @@ async def song(client, message):
         duration=int(yt.length),
         title=str(yt.title),
         performer=str(yt.author),
+        thumb=thumb_name,
         reply_to_message_id=message.message_id,
-    )
+       )
     await status.delete()
     os.remove(f"{str(user_id)}.mp3")
 
