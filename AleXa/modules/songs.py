@@ -38,7 +38,7 @@ class AioHttp:
         async with aiohttp.ClientSession() as session:
             async with session.get(link) as resp:
                 return await resp.read()
-thumb_name = f'https://telegra.ph/file/b3c58ee878c4e1216e4fe.jpg'
+thumb_name = f'aaaaa.jpg'
 
 @pbot.on_message(filters.command("song"))
 async def song(client, message):
