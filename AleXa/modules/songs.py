@@ -3,6 +3,7 @@ import os
 import aiohttp
 from pyrogram import filters
 from pytube import YouTube
+import requests
 from youtubesearchpython import VideosSearch
 
 from AleXa import LOGGER, pbot
