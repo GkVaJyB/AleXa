@@ -55,10 +55,10 @@ async def song(client, message):
     if not video_link:
         await status.edit("**Song not found.** 🤔")
         return ""
+    urllib.request.urlretrieve(f'https://img.youtube.com/vi/{video_id}/0.jpg', f"{message.message_id}.jpg")
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
-   urllib.request.urlretrieve(f'https://img.youtube.com/vi/{video_id}/0.jpg', f"{message.message_id}.jpg")
         thumb_name = f'{message.message_id}.jpg'
         download = audio.download(filename=f"{str(yt.title)}")
     except Exception as ex:
