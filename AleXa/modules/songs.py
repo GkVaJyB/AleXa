@@ -38,7 +38,7 @@ class AioHttp:
         async with aiohttp.ClientSession() as session:
             async with session.get(link) as resp:
                 return await resp.read()
-thumb_name = f'aaaaa.jpg'
+
 
 @pbot.on_message(filters.command("song"))
 async def song(client, message):
@@ -56,7 +56,12 @@ async def song(client, message):
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
-        thumb_name = f'thumb{message.message_id}.jpg'
+    response = requests.get(f'https://img.youtube.com/vi/{video_id}/0.jpg')
+    DIRCOVER =  message.message_id + ".jpg"
+    file = open(DIRCOVER, "wb")
+    file.write(response.content)
+    file.close()
+        thumb_name = f'{message.message_id}.jpg'
         download = audio.download(filename=f"{str(yt.title)}")
     except Exception as ex:
         await status.edit("Failed to download song")
