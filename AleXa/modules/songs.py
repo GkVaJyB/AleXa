@@ -57,7 +57,7 @@ async def song(client, message):
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
-    response = requests.get(f'https://img.youtube.com/vi/{video_id}/0.jpg')
+    response = download(f'https://img.youtube.com/vi/{video_id}/0.jpg')
     DIRCOVER =  message.message_id + ".jpg"
     file = open(DIRCOVER, "wb")
     file.write(response.content)
