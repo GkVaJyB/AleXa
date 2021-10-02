@@ -89,15 +89,7 @@ def num_blacklist_filters():
         return SESSION.query(BlackListFilters).count()
     finally:
         SESSION.close()
-        
-        
-def check_is_black_list(message: Message):
-    if message and message.from_user and message.from_user.id:
-        try:
-            s__ = SESSION.query(BlackList).get(str(message.from_user.id))
-            return s__
-        finally:
-            SESSION.close()
+
 
 
 def num_blacklist_chat_filters(chat_id):
