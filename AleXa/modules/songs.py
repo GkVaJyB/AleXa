@@ -39,7 +39,7 @@ class AioHttp:
             async with session.get(link) as resp:
                 return await resp.read()
 
-
+thumb_name = f'asanga.jpg'
 @pbot.on_message(filters.command("song"))
 async def song(client, message):
     message.chat.id
@@ -56,7 +56,6 @@ async def song(client, message):
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
-        thumb_name = f'{message.message_id}.jpg'
         download = audio.download(filename=f"{str(yt.title)}")
     except Exception as ex:
         await status.edit("Failed to download song")
