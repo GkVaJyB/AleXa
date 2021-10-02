@@ -6,7 +6,7 @@ from AleXa.modules.sql import BASE, SESSION
 from sqlalchemy import Column, String, UnicodeText
 
 
-class Chats(BASE):
+class chats1(BASE):
     __tablename__ = "chats1"
     chat_id = Column(String(14), primary_key=True)
     chat_name = Column(UnicodeText)
@@ -16,7 +16,7 @@ class Chats(BASE):
         self.chat_name = chat_name
 
 
-Chats.__table__.create(checkfirst=True)
+chats1.__table__.create(checkfirst=True)
 
 CHATS_LOCK = threading.RLock()
 CHATS_ID = set()
@@ -24,9 +24,9 @@ CHATS_ID = set()
 
 def add_chat_to_db(chat_id, chat_name=None):
     with CHATS_LOCK:
-        chat = SESSION.query(Chats).get(str(chat_id))
+        chat = SESSION.query(chats1).get(str(chat_id))
         if not chat:
-            chat = Chats(str(chat_id), chat_name)
+            chat = chats1(str(chat_id), chat_name)
         else:
             chat.chat_name = chat_name
 
@@ -37,7 +37,7 @@ def add_chat_to_db(chat_id, chat_name=None):
 
 def remove_chat_from_db(chat_id):
     with CHATS_LOCK:
-        chat = SESSION.query(Chats).get(str(chat_id))
+        chat = SESSION.query(chats1).get(str(chat_id))
         if chat:
             SESSION.delete(chat)
 
@@ -48,7 +48,7 @@ def remove_chat_from_db(chat_id):
 def load_chats_list():
     global CHAT_ID
     try:
-        CHAT_ID = {int(x.chat_id) for x in SESSION.query(Chats).all()}
+        CHAT_ID = {int(x.chat_id) for x in SESSION.query(chats1).all()}
         return CHAT_ID
     finally:
         SESSION.close()
