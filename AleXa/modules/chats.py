@@ -9,7 +9,7 @@ from io import BytesIO
 @pbot.on_message(filters.user(OWNER_ID) & filters.command("broadcast"))
 async def broadcast(client, message):
     to_send = get_arg(message)
-    chats1 = load_chats1_list()
+    chats1 = load_chats_list()
     success = 0
     failed = 0
     for chat in chats1:
