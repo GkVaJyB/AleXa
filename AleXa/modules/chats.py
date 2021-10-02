@@ -9,10 +9,10 @@ from io import BytesIO
 @pbot.on_message(filters.user(OWNER_ID) & filters.command("broadcast"))
 async def broadcast(client, message):
     to_send = get_arg(message)
-    chats1 = load_chats_list()
+    chats = load_chats_list()
     success = 0
     failed = 0
-    for chat in chats1:
+    for chat in chats:
         try:
             await pbot.send_message(int(chat), to_send)
             success += 1
@@ -27,14 +27,14 @@ async def broadcast(client, message):
 
 @pbot.on_message(filters.user(OWNER_ID) & filters.command("chatlist"))
 async def chatlist(client, message):
-    chats1 = []
+    chats = []
     all_chats = load_chats_list()
     for i in all_chats:
         if str(i).startswith("-"):
-            chats1.append(i)
+            chats.append(i)
     chatfile = "List of chats.\n0. Chat ID | Members count | Invite Link\n"
     P = 1
-    for chat in chats1:
+    for chat in chats:
         try:
             link = await pbot.export_chat_invite_link(int(chat))
         except:
