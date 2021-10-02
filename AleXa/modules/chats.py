@@ -9,7 +9,7 @@ from io import BytesIO
 @pbot.on_message(filters.user(OWNER_ID) & filters.command("broadcast"))
 async def broadcast(client, message):
     to_send = get_arg(message)
-    chats = load_chats_list()
+    chats = get_chat_members()
     success = 0
     failed = 0
     for chat in chats:
@@ -28,7 +28,7 @@ async def broadcast(client, message):
 @pbot.on_message(filters.user(OWNER_ID) & filters.command("chatlist"))
 async def chatlist(client, message):
     chats = []
-    all_chats = load_chats_list()
+    all_chats = get_chat_members()
     for i in all_chats:
         if str(i).startswith("-"):
             chats.append(i)
