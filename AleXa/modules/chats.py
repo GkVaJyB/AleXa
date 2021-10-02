@@ -1,7 +1,7 @@
 from pyrogram import filters
 from AleXa import app
 from AleXa.alexa import get_arg
-from AleXa.modules.chat_sql import load_chats_list, remove_chat_from_db
+from AleXa.modules.sql.chat_sql import load_chats_list, remove_chat_from_db
 from io import BytesIO
 
 
