@@ -184,9 +184,9 @@ def test(update, context):
 
 @run_async
 def start(update: Update, context: CallbackContext):
-    chat_id = message.chat.id
-    user_id = message.from_user["id"]
-    name = message.from_user["first_name"]
+    chat_id = update.effective_message.chat_id
+    user_id = update.effective_message.from_user["id"]
+    name = update.effective_message.from_user["first_name"]
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
     if update.effective_chat.type == "private":
