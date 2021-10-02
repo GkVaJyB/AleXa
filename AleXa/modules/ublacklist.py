@@ -3,7 +3,7 @@ from AleXa import telethn as borg, OWNER_ID
 from pyrogram import filters
 from pyrogram.errors import BadRequest
 from AleXa import pbot
-from AleXa.modules.sql.blacklist_sql as sql
+from AleXa.modules.sql.blacklistchat_sql as sql
 from AleXa.alexa import get_arg
 
 
