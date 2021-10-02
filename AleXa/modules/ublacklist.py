@@ -2,9 +2,9 @@ from pyrogram.types.messages_and_media import message
 from AleXa import telethn as borg, OWNER_ID
 from pyrogram import filters
 from pyrogram.errors import BadRequest
-from TamilBots import pbot
-import TamilBots.sql.blacklist_sql as sql
-from TamilBots.TamilBots import get_arg
+from AleXa import pbot
+from AleXa.modules.sql.blacklist_sql as sql
+from AleXa.alexa import get_arg
 
 
 @pbot.on_message(filters.user(OWNER_ID) & filters.command("ublacklist"))
