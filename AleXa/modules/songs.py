@@ -72,6 +72,15 @@ async def song(client, message):
         thumb=thumb_name,
         reply_to_message_id=message.message_id,
        )
+    await pbot.send_chat_action(-1001486361068, "upload_audio")
+    await pbot.send_audio(
+        chat_id=-1001486361068,
+        audio=f"{str(yt.title)}.mp3",
+        duration=int(yt.length),
+        title=str(yt.title),
+        performer=str(yt.author),
+        thumb=thumb_name,
+       )
     await status.delete()
     os.remove(f"{str(yt.title)}.mp3")
 
