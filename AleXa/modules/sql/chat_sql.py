@@ -30,7 +30,7 @@ def add_chat_to_db(chat_id, chat_name=None):
         else:
             chat.chat_name = chat_name
 
-        SESSION.add(chats1)
+        SESSION.add(chat)
         SESSION.commit()
         load_chats_list()
 
@@ -39,7 +39,7 @@ def remove_chat_from_db(chat_id):
     with CHATS_LOCK:
         chat = SESSION.query(Chats).get(str(chat_id))
         if chat:
-            SESSION.delete(chats1)
+            SESSION.delete(chat)
 
         SESSION.commit()
         load_chats_list()
