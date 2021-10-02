@@ -7,7 +7,7 @@ from sqlalchemy import Column, String, UnicodeText
 
 
 class Chats(BASE):
-    __tablename__ = "chats"
+    __tablename__ = "chats1"
     chat_id = Column(String(14), primary_key=True)
     chat_name = Column(UnicodeText)
 
@@ -24,7 +24,7 @@ CHATS_ID = set()
 
 def add_chat_to_db(chat_id, chat_name=None):
     with CHATS_LOCK:
-        chat = SESSION.query(Chats).get(str(chat_id))
+        chat = SESSION.query(Chats1).get(str(chat_id))
         if not chat:
             chat = Chats(str(chat_id), chat_name)
         else:
@@ -37,9 +37,9 @@ def add_chat_to_db(chat_id, chat_name=None):
 
 def remove_chat_from_db(chat_id):
     with CHATS_LOCK:
-        chat = SESSION.query(Chats).get(str(chat_id))
+        chat = SESSION.query(Chats1).get(str(chat_id))
         if chat:
-            SESSION.delete(chat)
+            SESSION.delete(chat1)
 
         SESSION.commit()
         load_chats_list()
@@ -48,7 +48,7 @@ def remove_chat_from_db(chat_id):
 def load_chats_list():
     global CHAT_ID
     try:
-        CHAT_ID = {int(x.chat_id) for x in SESSION.query(Chats).all()}
+        CHAT_ID = {int(x.chat_id) for x in SESSION.query(Chats1).all()}
         return CHAT_ID
     finally:
         SESSION.close()
