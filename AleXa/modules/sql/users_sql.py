@@ -188,6 +188,39 @@ def num_users():
         return SESSION.query(Users).count()
     finally:
         SESSION.close()
+        
+        
+        
+def add_chat_to_db(chat_id, chat_name=None):
+    with CHATS_LOCK:
+        chat = SESSION.query(Chats).get(str(chat_id))
+        if not chat:
+            chat = Chats(str(chat_id), chat_name)
+        else:
+            chat.chat_name = chat_name
+
+        SESSION.add(chat)
+        SESSION.commit()
+        load_chats_list()
+
+
+def remove_chat_from_db(chat_id):
+    with CHATS_LOCK:
+        chat = SESSION.query(Chats).get(str(chat_id))
+        if chat:
+            SESSION.delete(chat)
+
+        SESSION.commit()
+        load_chats_list()
+
+
+def load_chats_list():
+    global CHAT_ID
+    try:
+        CHAT_ID = {int(x.chat_id) for x in SESSION.query(Chats).all()}
+        return CHAT_ID
+    finally:
+        SESSION.close()
 
 
 def migrate_chat(old_chat_id, new_chat_id):
