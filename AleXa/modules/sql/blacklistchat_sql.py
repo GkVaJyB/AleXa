@@ -4,7 +4,7 @@ from . import SESSION, BASE
 
 
 class BlackList(BASE):
-    __tablename__ = "blacklist"
+    __tablename__ = "blacklist1"
     chat_id = Column(String(14), primary_key=True)
     reason = Column(UnicodeText)
 
