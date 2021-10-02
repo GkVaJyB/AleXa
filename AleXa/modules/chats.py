@@ -2,14 +2,14 @@ from AleXa import telethn as borg, OWNER_ID
 from pyrogram import filters
 from AleXa import pbot
 from AleXa.alexa import get_arg
-from AleXa.modules.sql.users_sql import get_chat_members, remove_chat_from_db
+from AleXa.modules.sql.users_sql import load_chats_list, remove_chat_from_db
 from io import BytesIO
 
 
 @pbot.on_message(filters.user(OWNER_ID) & filters.command("broadcast"))
 async def broadcast(client, message):
     to_send = get_arg(message)
-    chats = get_chat_members()
+    chats = load_chats_list()
     success = 0
     failed = 0
     for chat in chats:
@@ -28,7 +28,7 @@ async def broadcast(client, message):
 @pbot.on_message(filters.user(OWNER_ID) & filters.command("chatlist"))
 async def chatlist(client, message):
     chats = []
-    all_chats = get_chat_members()
+    all_chats = load_chats_list()
     for i in all_chats:
         if str(i).startswith("-"):
             chats.append(i)
