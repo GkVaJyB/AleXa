@@ -1,3 +1,4 @@
+from AleXa import telethn as borg, OWNER_ID
 from pyrogram import filters
 from AleXa import pbot
 from AleXa.alexa import get_arg
@@ -5,7 +6,7 @@ from AleXa.modules.sql.chat_sql import load_chats_list, remove_chat_from_db
 from io import BytesIO
 
 
-@pbot.on_message(filters.user(-1149011555) & filters.command("broadcast"))
+@pbot.on_message(filters.user(OWNER_ID) & filters.command("broadcast"))
 async def broadcast(client, message):
     to_send = get_arg(message)
     chats = load_chats_list()
@@ -24,7 +25,7 @@ async def broadcast(client, message):
     )
 
 
-@pbot.on_message(filters.user(-1149011555) & filters.command("chatlist"))
+@pbot.on_message(filters.user(OWNER_ID) & filters.command("chatlist"))
 async def chatlist(client, message):
     chats = []
     all_chats = load_chats_list()
