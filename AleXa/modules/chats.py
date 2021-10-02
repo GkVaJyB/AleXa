@@ -2,7 +2,7 @@ from AleXa import telethn as borg, OWNER_ID
 from pyrogram import filters
 from AleXa import pbot
 from AleXa.alexa import get_arg
-from AleXa.modules.sql.users_sql import load_chats_list, remove_chat_from_db
+from AleXa.modules.sql.chat_sql import load_chats_list, remove_chat_from_db
 from io import BytesIO
 
 
