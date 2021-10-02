@@ -39,7 +39,7 @@ def remove_chat_from_db(chat_id):
     with CHATS_LOCK:
         chat = SESSION.query(Chats).get(str(chat_id))
         if chat:
-            SESSION.delete(chat1)
+            SESSION.delete(chat)
 
         SESSION.commit()
         load_chats_list()
