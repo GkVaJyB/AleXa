@@ -1,11 +1,11 @@
 from pyrogram import filters
-from AleXa import app
+from AleXa import pbot
 from AleXa.alexa import get_arg
 from AleXa.modules.sql.chat_sql import load_chats_list, remove_chat_from_db
 from io import BytesIO
 
 
-@app.on_message(filters.user(-1149011555) & filters.command("broadcast"))
+@pbot.on_message(filters.user(-1149011555) & filters.command("broadcast"))
 async def broadcast(client, message):
     to_send = get_arg(message)
     chats = load_chats_list()
@@ -13,7 +13,7 @@ async def broadcast(client, message):
     failed = 0
     for chat in chats:
         try:
-            await app.send_message(int(chat), to_send)
+            await pbot.send_message(int(chat), to_send)
             success += 1
         except:
             failed += 1
@@ -24,7 +24,7 @@ async def broadcast(client, message):
     )
 
 
-@app.on_message(filters.user(-1149011555) & filters.command("chatlist"))
+@pbot.on_message(filters.user(-1149011555) & filters.command("chatlist"))
 async def chatlist(client, message):
     chats = []
     all_chats = load_chats_list()
@@ -35,11 +35,11 @@ async def chatlist(client, message):
     P = 1
     for chat in chats:
         try:
-            link = await app.export_chat_invite_link(int(chat))
+            link = await pbot.export_chat_invite_link(int(chat))
         except:
             link = "Null"
         try:
-            members = await app.get_chat_members_count(int(chat))
+            members = await pbot.get_chat_members_count(int(chat))
         except:
             members = "Null"
         try:
