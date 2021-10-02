@@ -39,7 +39,7 @@ class AioHttp:
             async with session.get(link) as resp:
                 return await resp.read()
 
-thumb_name = f'asanga.jpg'
+thumb_name = 'photo_2021-09-11_15-38-45.jpg'
 @pbot.on_message(filters.command("song"))
 async def song(client, message):
     message.chat.id
