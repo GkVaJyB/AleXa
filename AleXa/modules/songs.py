@@ -3,8 +3,6 @@ import os
 import aiohttp
 from pyrogram import filters
 from pytube import YouTube
-import requests
-import urllib.request
 from youtubesearchpython import VideosSearch
 
 from AleXa import LOGGER, pbot
@@ -52,11 +50,9 @@ async def song(client, message):
         return ""
     status = await message.reply("**Downloading Song** 😊")
     video_link = yt_search(args)
-    imgp = yt_search(args["id"])
     if not video_link:
         await status.edit("**Song not found.** 🤔")
         return ""
-    urllib.request.urlretrieve(f"{imgp}", f"{message.message_id}.jpg")
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
     try:
