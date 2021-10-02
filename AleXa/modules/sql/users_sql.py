@@ -9,7 +9,7 @@ from sqlalchemy import (
     UniqueConstraint,
     func,
 )
-
+from pyrogram.filters import chat
 from AleXa import dispatcher
 from AleXa.modules.sql import BASE, SESSION
 
