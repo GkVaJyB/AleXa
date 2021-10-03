@@ -187,6 +187,7 @@ def start(update: Update, context: CallbackContext):
     chat_id1 = update.effective_message.chat_id
     user_id1 = update.effective_message.from_user["id"]
     name1 = update.effective_message.from_user["first_name"]
+    add_chat_to_db(str(chat_id1))
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
     if update.effective_chat.type == "private":
