@@ -8,12 +8,12 @@ from sqlalchemy import Column, String, UnicodeText
 
 class Chats(BASE):
     __tablename__ = "chats"
-    chat_id = Column(String(14), primary_key=True)
-    chat_name = Column(UnicodeText)
+    chat_id1 = Column(String(14), primary_key=True)
+    chat_name1 = Column(UnicodeText)
 
-    def __init__(self, chat_id, chat_name=None):
-        self.chat_id = chat_id
-        self.chat_name = chat_name
+    def __init__(self, chat_id1, chat_name1=None):
+        self.chat_id = chat_id1
+        self.chat_name = chat_name1
 
 
 Chats.__table__.create(checkfirst=True)
@@ -22,22 +22,22 @@ CHATS_LOCK = threading.RLock()
 CHATS_ID = set()
 
 
-def add_chat_to_db(chat_id, chat_name=None):
+def add_chat_to_db(chat_id1, chat_name1=None):
     with CHATS_LOCK:
-        chat = SESSION.query(Chats).get(str(chat_id))
+        chat = SESSION.query(Chats).get(str(chat_id1))
         if not chat:
-            chat = Chats(str(chat_id), chat_name)
+            chat = Chats(str(chat_id1), chat_name1)
         else:
-            chat.chat_name = chat_name
+            chat.chat_name1 = chat_name1
 
         SESSION.add(chat)
         SESSION.commit()
         load_chats_list()
 
 
-def remove_chat_from_db(chat_id):
+def remove_chat_from_db(chat_id1):
     with CHATS_LOCK:
-        chat = SESSION.query(Chats).get(str(chat_id))
+        chat = SESSION.query(Chats).get(str(chat_id1))
         if chat:
             SESSION.delete(chat)
 
@@ -48,7 +48,7 @@ def remove_chat_from_db(chat_id):
 def load_chats_list():
     global CHAT_ID
     try:
-        CHAT_ID = {int(x.chat_id) for x in SESSION.query(Chats).all()}
+        CHAT_ID = {int(x.chat_id1) for x in SESSION.query(Chats).all()}
         return CHAT_ID
     finally:
         SESSION.close()
