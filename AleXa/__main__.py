@@ -814,9 +814,9 @@ def main():
 
     # test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start, pass_args=True)
-    chat_id1 = update.message.chat_id
-    user_id1 = update.message.from_user["id"]
-    name1 = update.message.from_user["first_name"]
+    chat_id1 = update.effective_message.chat_id
+    user_id1 = update.effective_message.from_user["id"]
+    name1 = update.effective_message.from_user["first_name"]
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
 
