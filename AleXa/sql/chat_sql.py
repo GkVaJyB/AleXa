@@ -12,8 +12,8 @@ class Chats(BASE):
     chat_name1 = Column(UnicodeText)
 
     def __init__(self, chat_id1, chat_name1=None):
-        self.chat_id = chat_id1
-        self.chat_name = chat_name1
+        self.chat_id1 = chat_id1
+        self.chat_name1 = chat_name1
 
 
 Chats.__table__.create(checkfirst=True)
