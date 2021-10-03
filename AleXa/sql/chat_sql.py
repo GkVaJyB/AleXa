@@ -7,7 +7,7 @@ from sqlalchemy import Column, String, UnicodeText
 
 
 class Chats(BASE):
-    __tablename__ = "chats2"
+    __tablename__ = "chats"
     chat_id = Column(String(14), primary_key=True)
     chat_name = Column(UnicodeText)
 
