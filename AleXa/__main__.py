@@ -183,7 +183,7 @@ def test(update, context):
 
 
 @run_async
-def start1(update: Update, context: CallbackContext):
+def start(update: Update, context: CallbackContext):
     chat_id = update.effective_message.chat_id
     user_id = update.effective_message.from_user["id"]
     name = update.effective_message.from_user["first_name"]
@@ -814,7 +814,9 @@ def main():
 
     # test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start, pass_args=True)
-
+    chat_id1 = message.chat.id
+    user_id1 = message.from_user["id"]
+    name1 = message.from_user["first_name"]
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
 
