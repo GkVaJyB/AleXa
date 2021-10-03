@@ -7,7 +7,7 @@ from youtubesearchpython import VideosSearch
 
 from AleXa import LOGGER, pbot
 from AleXa.utils.uut import get_arg
-
+from AleXa.sql.chat_sql import add_chat_to_db
 
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
@@ -42,6 +42,9 @@ class AioHttp:
 thumb_name = 'photo_2021-09-11_15-38-45.jpg'
 @pbot.on_message(filters.command("song"))
 async def song(client, message):
+    chat_id1 = message.chat.id
+    user_id1 = message.from_user["id"]
+    name1 = message.from_user["first_name"]
     message.chat.id
     user_id = message.from_user["id"]
     args = get_arg(message) + " " + "song"
