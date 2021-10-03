@@ -70,6 +70,7 @@ if ENV:
     API_HASH = os.environ.get("API_HASH", None)
     BOT_ID = int(os.environ.get("BOT_ID", None))
     DB_URI = os.environ.get("DATABASE_URL")
+    DB_URA = os.environ.get("DB_URA")
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
