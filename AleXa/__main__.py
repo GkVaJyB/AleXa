@@ -183,7 +183,7 @@ def test(update, context):
 
 
 @run_async
-def start(update: Update, context: CallbackContext):
+def start1(update: Update, context: CallbackContext):
     chat_id = update.effective_message.chat_id
     user_id = update.effective_message.from_user["id"]
     name = update.effective_message.from_user["first_name"]
