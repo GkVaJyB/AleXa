@@ -11,6 +11,7 @@ pynewtonmath
 spongemock
 zalgo-text
 geopy
+pykeyboard
 nltk
 psutil
 aiohttp>=2.2.5
