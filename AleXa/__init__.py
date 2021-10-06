@@ -72,6 +72,7 @@ if ENV:
     DB_URI = os.environ.get("DATABASE_URL")
     DB_URA = os.environ.get("DB_URA")
     ARQ_API = os.environ.get("ARQ_API")
+    BOT_USERNAME = os.environ.get("BOT_USERNAME")
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
