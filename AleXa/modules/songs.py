@@ -9,14 +9,8 @@ from youtube_search import YoutubeSearch
 import requests
 
 import os
-from DaisyX.services.pyrogram import pbot as bot
+from AleXa.services.pyrogram import pbot as bot
 
-bot = Client(
-    'SongPlayRoBot',
-    bot_token = Config.BOT_TOKEN,
-    api_id = Config.API_ID,
-    api_hash = Config.API_HASH
-)
 
 ## Extra Fns -------------------------------
 
