@@ -19,7 +19,7 @@ from AleXa.function.inlinehelper import arq
 from AleXa.function.pluginhelpers import get_text, progress
 from AleXa.services.pyrogram import pbot as Client
 
-dl_limit = 9999
+dl_limit = 0
 
 
 @Client.on_message(filters.command(["music", "song"]))
@@ -78,13 +78,13 @@ async def ytmusic(client, message: Message):
         "logtostderr": False,
     }
     try:
-        dl_limit = dl_limit + 1
+        dl_limit = dl_limit + 999
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(mo, download=True)
 
     except Exception as e:
         await pablo.edit(f"**Failed To Download** \n**Error :** `{str(e)}`")
-        # dl_limit = dl_limit-1
+        # dl_limit = dl_limit-999
         return
     c_time = time.time()
     capy = f"**Song Name :** `{thum}` \n**Requested For :** `{urlissed}` \n**Channel :** `{thums}` \n**Link :** `{mo}`"
@@ -106,9 +106,9 @@ async def ytmusic(client, message: Message):
                 file_stark,
             ),
         )
-        dl_limit = dl_limit - 1
+        dl_limit = dl_limit - 999
     except:
-        dl_limit = dl_limit - 1
+        dl_limit = dl_limit - 999
         return
     await pablo.delete()
     for files in (sedlyf, file_stark):
