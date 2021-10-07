@@ -26,6 +26,7 @@ dl_limit = 0
 
 @Client.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message: Message):
+    urlissed = get_text(message)
     pablo = await client.send_message(
         message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
     )
