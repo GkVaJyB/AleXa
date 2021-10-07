@@ -20,7 +20,7 @@ from AleXa.function.pluginhelpers import get_text, progress
 from AleXa.services.pyrogram import pbot as Client
 
 dl_limit = 0
-
+is_downloading = False
 
 @Client.on_message(filters.command(["vsong", "video"]))
 async def ytmusic(client, message: Message):
