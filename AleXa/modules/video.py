@@ -14,6 +14,7 @@ import requests
 import wget
 import youtube_dl
 from pyrogram import Client, filters
+from AleXa import LOGGER, pbot as Client
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
