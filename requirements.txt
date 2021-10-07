@@ -1,4 +1,5 @@
 future
+telebot
 search_engine_parser
 Python_ARQ
 emoji
