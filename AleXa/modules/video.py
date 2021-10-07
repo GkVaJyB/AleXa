@@ -74,7 +74,7 @@ async def download_video(v_url):
             "quiet": True,
         }
         try:
-        with youtube_dl.YoutubeDL(opts) as ytdl:
+        await youtube_dl.YoutubeDL(opts) as ytdl:
             infoo = ytdl.extract_info(url, False)
             duration = round(infoo["duration"] / 60)
 
