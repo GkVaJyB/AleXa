@@ -2,7 +2,14 @@ import asyncio
 import json
 import os
 import time
+import wget
+import youtube_dl
+from urllib.parse import urlparse
 
+import aiofiles
+import aiohttp
+from pyrogram import filters
+from pyrogram.types import Message
 from telethon.tl.types import DocumentAttributeAudio
 from youtube_dl import YoutubeDL
 from youtube_dl.utils import (
