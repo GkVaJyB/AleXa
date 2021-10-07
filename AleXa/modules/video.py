@@ -30,12 +30,7 @@ async def ytmusic(client, message: Message):
             "Another download is in progress, try again after sometime."
         )
         return
-    global dl_limit
-    if dl_limit >= 4:
-        await message.reply_text(
-            "Daisy s server busy due to too many downloads, try again after sometime."
-        )
-        return
+    
     urlissed = get_text(message)
 
     pablo = await client.send_message(
