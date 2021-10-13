@@ -5,6 +5,7 @@ import ffmpeg
 import asyncio
 import requests
 import youtube_dl
+from AleXa.services.pyrogram import pbot
 from config import Config
 from pyrogram import Client, filters
 from pyrogram.types import Message
