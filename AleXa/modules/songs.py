@@ -52,8 +52,8 @@ async def song(client, message):
     video_link = yt_search(args)
     duration = results[0]["duration"]
     if time_to_seconds(duration) >= 1800:  # duration limit
-    m.edit("Exceeded 30mins cap")
-    return
+    await status.edit("**Song not found.** 🤔")
+    return ""
     if not video_link:
         await status.edit("**Song not found.** 🤔")
         return ""
