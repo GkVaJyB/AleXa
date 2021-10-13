@@ -50,15 +50,15 @@ async def song(client, message):
         return ""
     status = await message.reply("**Downloading Song** 😊")
     video_link = yt_search(args)
-    duration = results[0]["duration"]
-    if time_to_seconds(duration) >= 1800:  # duration limit
-    await status.edit("**Song not found.** 🤔")
-    return ""
     if not video_link:
         await status.edit("**Song not found.** 🤔")
         return ""
     yt = YouTube(video_link)
     audio = yt.streams.filter(only_audio=True).first()
+    duration = results[0]["duration"]
+    if time_to_seconds(duration) >= 1800:  # duration limit
+    await status.edit("**Song not found.** 🤔")
+    return ""
     try:
         download = audio.download(filename=f"{str(user_id)}")
     except Exception as ex:
