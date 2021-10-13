@@ -5,7 +5,7 @@ import ffmpeg
 import asyncio
 import requests
 import youtube_dl
-from AleXa.services.pyrogram import pbot
+from AleXa import LOGGER, pbot
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
