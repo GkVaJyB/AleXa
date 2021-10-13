@@ -1,4 +1,5 @@
 future
+ffmpeg
 telebot
 search_engine_parser
 Python_ARQ
