@@ -11,8 +11,6 @@ from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 
 
-## Extra Fns -------------------------------
-
 # Convert hh:mm:ss to seconds
 def time_to_seconds(time):
     stringt = str(time)
@@ -21,7 +19,7 @@ def time_to_seconds(time):
 
 ## Commands --------------------------------
 
-@bot.on_message(filters.command(['sg']))
+@pbot.on_message(filters.command(['sg']))
 async def song(_, message: Message):
     query = ''
     for i in message.command[1:]:
@@ -97,11 +95,12 @@ async def song(_, message: Message):
 
 __help__ = """
 *New Update Songs Saveing REAL NAME*
- *You can either enter just the song name or both the artist and song
+ *You can either enter just the song name or pboth the artist and song
   name. *
   /song <songname artist(optional)>*:* uploads the song in it's best quality available
   /video <songname artist(optional)>*:* uploads the video song in it's best quality available
   /lyrics <song>*:* returns the lyrics of that song.
 """
 
-__mod_name__ = "Music"
+__mod_name__ = "Asanga Music"
+
