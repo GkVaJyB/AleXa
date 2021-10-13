@@ -57,8 +57,6 @@ async def song(client, message):
     audio = yt.streams.filter(only_audio=True).first()
     duration = results[0]["duration"]
     if time_to_seconds(duration) >= 1800:
-    await status.edit("Failed to download song")
-        LOGGER.error(ex)
         return ""  # duration limit
     try:
         download = audio.download(filename=f"{str(user_id)}")
